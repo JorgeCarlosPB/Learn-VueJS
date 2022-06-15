@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro de VUEJS</title>
+</head>
+<body>
+    
+    <!-- Control absoluto de este div por VueJs-->
+    <div id="myApp">
+        <h1>Hola mundo</h1>
+        <h3>{{quote}}</h3>
+        <blockquote>{{author}}</blockquote>
+
+        <button v-on:click="changeQuote">
+            change quote
+        </button>
+    </div>
+
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js"></script>
+</body>
+</html>
