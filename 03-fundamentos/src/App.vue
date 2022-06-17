@@ -1,19 +1,26 @@
 <template>
   <div>
-    <img alt="Vue logo" src="./assets/logo.png">
-    <counter></counter>
+    <!-- <img alt="Vue logo" src="./assets/logo.png">
+    <counter title="Entraron"></counter>
+    <counter v-bind:start="15"/> -->
+
+    <Indecision />
+
+
   </div>
 </template>
 
 <script>
 
 import Counter from './components/Counter.vue'
+import Indecision from './components/Indecision.vue'
 
 
 export default {
   name: 'App',
   components:{
-    Counter
+    Counter,
+    Indecision,
   }
   
 }
