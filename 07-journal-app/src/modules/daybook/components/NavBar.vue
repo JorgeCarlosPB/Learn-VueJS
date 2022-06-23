@@ -13,8 +13,5 @@
                 <i class="fa fa-sign-out-alt"></i>
             </button>
         </div>
-
-
-
     </nav>
 </template>
