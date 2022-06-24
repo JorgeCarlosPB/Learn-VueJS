@@ -30,13 +30,13 @@ export const updateEntry = async ({commit}, entry) => {                //entry d
     const dataToSave = {date, picture, text}
 
     const resp=await journalApi.put(`/entries/${entry.id}.json`,dataToSave)
-    console.log(resp)
+    dataToSave.id = entry.id
     //Extraer solo lo que se necesita  //-id
 
     //await jounrlaApi.put(PATH .json, dataToSave)
 
     //Commit de una mutation -> updateEntry
-    commit('updateEntry',{...entry})
+    commit('updateEntry',{...dataToSave})
 
 }
 

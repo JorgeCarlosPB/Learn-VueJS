@@ -36,23 +36,27 @@
                 placeholder="¿Qué sucedió hoy?">
             </textarea>
         </div>
+
+        <img 
+            v-if="entry.picture && !localImage"
+            :src="entry.picture"
+            alt="entry-picture" 
+            class="img-thumbnail">
+
+        <img 
+            v-if="localImage"
+            :src="localImage" 
+            alt="entry-picture" 
+            class="img-thumbnail">
+
+
     </template>
     <MyFab 
         icon="fa-save"
         @on:click="saveEntry"
     />
 
-    <img 
-        v-if="entry.picture && !localImage"
-        src="entry.picture"
-        alt="entry-picture" 
-        class="img-thumbnail">
-
-    <img 
-        v-if="localImage"
-        :src="localImage" 
-        alt="entry-picture" 
-        class="img-thumbnail">
+    
 
   
 </template>
@@ -67,6 +71,7 @@ import uploadImage from '../helpers/uploadImage'
 import Swal from 'sweetalert2'
 
 export default {
+    name: 'EntryView',
     props:{
         id:{
             type: String,
@@ -121,7 +126,7 @@ export default {
             this.entry=entry
         },
         async saveEntry(){
-            new Swal({
+            Swal.fire({
                 title: 'Espere por favor',
                 allowOutsideClick:false
             })
@@ -152,6 +157,8 @@ export default {
 
         async onDeleteEntry(){
 
+            console.log('se llamó aquí')
+
             const {isConfirmed} = await Swal.fire({
                 title: '¿Está seguro?',
                 text: 'Una vez borrado, no se puede recuperar',
@@ -159,12 +166,16 @@ export default {
                 confirmButtonText: 'Sí, estoy seguro',
             })
 
+            console.log({isConfirmed})
+
             if(isConfirmed){
-                new Swal({
+                Swal.fire({
                     title: 'Espere por favor',
                     allowOutsideClick: false
                 })
                 Swal.showLoading()
+
+                console.log('A punto de eliminar!')
                 await this.deleteEntry(this.entry.id)
                 this.$router.push({name: 'no-entry'})
 
