@@ -35,6 +35,16 @@ const routes = [
     name: 'pokemon-id', 
     component: () => import(/* webpackChunkName: "pokemon-id" */ '../views/MyPokemon.vue')
   },
+  {
+    path: '/todo',
+    name: 'todo', 
+    component: () => import(/* webpackChunkName: "TodoVuex" */ '../views/TodoVuex.vue')
+  },
+  {
+    path: '/slots',
+    name: 'slots', 
+    component: () => import(/* webpackChunkName: "TodoVuex" */ '../views/CustomSlots.vue')
+  },
 ]
 
 const router = createRouter({
